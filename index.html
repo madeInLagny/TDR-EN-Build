@@ -8,37 +8,67 @@
 				myvid.src = "images/tdr/home-hd.mp4";
 				myvid.load();
 			}
-		}, { once: true });</script><script defer="defer" src="https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@v3.0.0-rc.16/dist/cookieconsent.umd.js"></script><script>// Function to load the CDN script
-  function loadCDN(GDPR) {
-    var script = document.createElement('script');
-    script.src = GDPR ? "./js/cookieConsent/gdpr-config.js" : "./js/cookieConsent/row-config.js";
+		}, { once: true });</script><script defer="defer" src="https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@3.0.1/dist/cookieconsent.umd.js"></script><script>// Function to load the CDN script
+  function loadCDN() {
+    var script = document.createElement("script");
+    script.src = "./js/cookieConsent/gdpr-config.js"
     script.async = true;
     document.body.appendChild(script);
     script.onerror = function () {
-      console.error('Error loading CDN script.');
+      console.error("Error loading CDN script.");
     };
   }
 
   // Function to check if the user is in the EU
   function checkEULocation() {
-    fetch('https://ipinfo.io/json')
-      .then(response => response.json())
-      .then(data => {
+    fetch("https://ipinfo.io/json")
+      .then((response) => response.json())
+      .then((data) => {
         // Check if the country is in the EU
-        var euCountries = ['GB', 'AT', 'BE', 'BG', 'CY', 'CZ', 'DE', 'DK', 'EE', 'ES', 'FI', 'FR', 'GR', 'HR', 'HU', 'IE', 'IT', 'LT', 'LU', 'LV', 'MT', 'NL', 'PL', 'PT', 'RO', 'SE', 'SI', 'SK'];
+        var euCountries = [
+          "GB",
+          "AT",
+          "BE",
+          "BG",
+          "CY",
+          "CZ",
+          "DE",
+          "DK",
+          "EE",
+          "ES",
+          "FI",
+          "FR",
+          "GR",
+          "HR",
+          "HU",
+          "IE",
+          "IT",
+          "LT",
+          "LU",
+          "LV",
+          "MT",
+          "NL",
+          "PL",
+          "PT",
+          "RO",
+          "SE",
+          "SI",
+          "SK",
+        ];
         if (euCountries.includes(data.country)) {
           loadCDN(true);
         } else {
-          loadCDN()
+          loadCDN();
         }
       })
-      .catch(error => {
-        console.error('Error fetching IP information:', error);
+      .catch((error) => {
+        console.error("Error fetching IP information:", error);
       });
   }
 
   // Check the user's location on page load
-  checkEULocation();</script><script src="js/functions.js"></script><script>var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+  //checkEULocation();
+  loadCDN();</script><script src="js/functions.js"></script><script>var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
   (function () {
     var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
     s1.async = true;
